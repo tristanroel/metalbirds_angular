@@ -7,7 +7,7 @@
             </div >
             <div class="cntry">
                 <img *ngIf="!selectedCountry" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/International_Flag_of_Planet_Earth_Budassi_version.svg/1024px-International_Flag_of_Planet_Earth_Budassi_version.svg.png"width="50" height="30">
-                <img *ngIf="selectedCountry" src={{selectedCountry?.flags}} width="50" height="30" alt="" srcset="">
+                <img *ngIf="selectedCountry" src={{selectedCountry.flags}} width="50" height="30" alt="" srcset="">
             </div>
         </div>
         <div class="wrap">

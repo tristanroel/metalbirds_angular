@@ -22,7 +22,7 @@ export class EditprofileComponent {
   emailForm! : FormGroup;
   user! : Iuser;
   useredit! : IuserEdit;
-  selectedCountry!: Icountry | undefined;
+  selectedCountry: Icountry | undefined;
   countries : Icountry[] = [];
   isEditCountry : boolean = false;
   imgNbr : number = 1;
