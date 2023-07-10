@@ -9,15 +9,15 @@
         </div>
         <div>
             <div class="homediv">
-                <a routerLink="/metalbirds"><button class="homebtn btn1">PLAY</button></a>
+                <button routerLink="/metalbirds" class="homebtn btn1">PLAY</button>
             </div>
             <div class="homediv">
-                <a *ngIf="!isConnected" routerLink="/login"><button class="homebtn btn2" (click)="login()">LOGIN</button></a>
+                <button *ngIf="!isConnected" routerLink="/login" class="homebtn btn2" (click)="login()">LOGIN</button>
                 <button class="homebtn btn2" *ngIf="isConnected" (click)="logout()">LOGOUT</button>
             </div>
             <div class="homediv">
-                <a *ngIf="isConnected" routerLink="/profile"><button class="homebtn btn2">PROFILE</button></a>
-                <a *ngIf="!isConnected" routerLink="/register"><button class="homebtn btn3">REGISTER</button></a>
+                <button *ngIf="isConnected" routerLink="/profile" class="homebtn btn2">PROFILE</button>
+                <button *ngIf="!isConnected" routerLink="/register" class="homebtn btn3">REGISTER</button>
             </div>
             <div class="homediv">
                 <a routerLink="/scores"><button class="homebtn btn4">SCORES</button></a>

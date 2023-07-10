@@ -99,8 +99,8 @@ export class EditprofileComponent {
   }
   submitCountryForm(){
     if (this.countryForm.valid) {
-      this.user.country = this.countryForm.value.country.name;
-      this.user.flagUrl = this.countryForm.value.country.flagUrl;
+      this.user.country = (this.countryForm.value.country.name === undefined)? "Earth" : this.countryForm.value.country.name;
+      this.user.flagUrl = (this.countryForm.value.country.flagUrl === undefined)? "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/International_Flag_of_Planet_Earth_Budassi_version.svg/1024px-International_Flag_of_Planet_Earth_Budassi_version.svg.png" : this.countryForm.value.country.flagUrl;
       console.log(this.countryForm.value.country.flagUrl);
       console.log(this.countryForm.value.country.name);
       

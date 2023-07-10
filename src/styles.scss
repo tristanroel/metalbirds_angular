@@ -8,7 +8,7 @@
     font-weight: 400;
     font-weight:normal;
 }
-body{
+html{
     background-color: #3D3D3D;
 }
 *{
@@ -78,25 +78,28 @@ body{
     // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
     box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
 }
-.btn1{
-    background-color: #515151;
-    :hover{
-        background-color: #e26969;
-    }
+.homebtn:hover{
+    margin: 4px 0 0 6px;
+    box-shadow: 1px 1px white;
 }
+.homebtn:active{
+    background-color: none;
+    //quatrieme parametre => opacite
+    border-top: 8px solid rgba(0, 0, 0, 0.5);
+    border-left: 8px solid rgba(0, 0, 0, 0.5);
+    color:#3D3D3D;
+    box-shadow: none;
+    
+}
+.btn1{background-color: #515151;}
 .btn2{background-color: #3D3D3D;}
 .btn3{background-color: #3D3D3D}
 .btn4{background-color: #515151;}
 
-.btn3 :hover{
-    background-color: #3367a3;
-}
-.btn2 :hover{
-    background-color: #1f7888;
-}
-.btn4 :hover{
-    background-color: #4360e0;
-}
+.btn1:hover{background-color: #e26969;}
+.btn3:hover{background-color: #3367a3;}
+.btn2:hover{background-color: #1f7888;}
+.btn4:hover{background-color: #4360e0;}
 
 .form{
     background-color: #3D3D3D;
@@ -131,21 +134,21 @@ body{
     input:focus {
         border: none;
       }
-    button{
-        appearance: none;
-        -webkit-appearance: none; /* Pour certains navigateurs WebKit */
-        -moz-appearance: none; /* Pour Firefox */
-        margin: 2px;
-        border : none;
-        width: 150px;
-        font-size: 10px;
-        height: 30px;
-        // background-color: #3D3D3D;
-        //border: 2px solid #3D3D3D;
-        color: aliceblue;
-        // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
-        box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
-    }
+    // button{
+    //     appearance: none;
+    //     -webkit-appearance: none; /* Pour certains navigateurs WebKit */
+    //     -moz-appearance: none; /* Pour Firefox */
+    //     margin: 2px;
+    //     border : none;
+    //     width: 150px;
+    //     font-size: 10px;
+    //     height: 30px;
+    //     // background-color: #3D3D3D;
+    //     //border: 2px solid #3D3D3D;
+    //     color: aliceblue;
+    //     // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
+    //     box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+    // }
 }
 // button:visited {
 //     background-color: red;
