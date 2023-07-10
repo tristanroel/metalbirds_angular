@@ -55,10 +55,10 @@ class MainScene extends Phaser.Scene {
     scoreValue : number = 0;
     levelValue : number = 1;
     skyIsVisible : boolean= true;
-    pointxt! : Phaser.GameObjects.Text;
+    pointxt! : Phaser.GameObjects.BitmapText;
     scoretext! : any;
     leveltxt! : any;
-    gameovertxt! : Phaser.GameObjects.Text;
+    gameovertxt! : Phaser.GameObjects.BitmapText;
     goscoretxt! : any;
     starttxt! : any;
     reactor! : Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
@@ -79,6 +79,7 @@ class MainScene extends Phaser.Scene {
     killwall : any;
   
     preload() {
+      this.load.bitmapFont('customfont','assets/img/gb.png', 'assets/img/gb.xml');
       this.load.spritesheet('player', 'assets/img/f16.png', {frameWidth : 31, frameHeight : 48});
       this.load.spritesheet('bullet','assets/img/bullet01.png', {frameWidth : 16, frameHeight : 16});
       this.load.spritesheet('fatbullet','assets/img/bullet01.png', {frameWidth : 32, frameHeight : 32});
@@ -92,17 +93,18 @@ class MainScene extends Phaser.Scene {
     }
 
     create() {
-        console.log('create method');
+        // this.add.bitmapText(183, 223,'customfont','MetalBirds',24)
         this.tweenManager = this.tweens;
         this.menuBar = this.add.rectangle(183,10,366,30,0x3D3D3D);                                   //healthbar
         this.menuBar.setScrollFactor(0,0);
         this.menuBar.setDepth(3);
         this.input.keyboard?.on('keydown-SPACE',()=> this.PauseGameAction());
         this.cursor = this.input.keyboard?.createCursorKeys();
-
+        
         this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-
+        
         this.camera = this.cameras.main;
+        this.camera.flashEffect.start();
         this.camera.setViewport(0, 0, 366, 445); //bordure externe visible l'ors du tremblement
         this.player = this.physics.add.sprite(183, 350,'airplanes').setDepth(2);
         this.player.body.setSize(8, 20);                                    
@@ -126,13 +128,21 @@ class MainScene extends Phaser.Scene {
         this.city.alpha = 0.7;
         this.sky = this.add.tileSprite(183,222.5,366,445,'sky', 0)
         this.sky.alpha = 0.4;
-        this.scoretext = this.add.text(290, 10, 'SCORE:',{font:'16px Arial Black'}).setOrigin(0.5, 0.5).setDepth(4);    
-        this.leveltxt = this.add.text(150, 10, 'LEVEL: ',{ font: '18px Courier'}).setOrigin(0.5, 0.5).setDepth(4);
-        this.starttxt = this.add.text(183, 200, '3',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4);
-        this.gameovertxt = this.add.text(183, 200, 'GAME OVER',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
-        this.goscoretxt = this.add.text(183, 260, 'score',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
+        this.scoretext =  this.add.bitmapText(290, 10,'customfont','score :0',10).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
+        this.leveltxt =  this.add.bitmapText(150, 10,'customfont','level :0',10).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
+        this.starttxt =  this.add.bitmapText(183, 200,'customfont','3',40).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
+        this.gameovertxt = this.add.bitmapText(183, 200,'customfont','GAME OVER',40).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
+        this.goscoretxt = this.add.bitmapText(183, 260,'customfont','',40).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
+        this.pointxt = this.add.bitmapText(183, 260,'customfont','',10).setTintFill(0xffffff).setOrigin(0.5, 0.5);
+        //this.scoretext.setTint(0xff0000);
+        // this.scoretext.setTintFill(0xffffff)
+        // this.scoretext = this.add.text(290, 10, 'SCORE:',{fontFamily:'customfont'}).setOrigin(0.5, 0.5).setDepth(4);    
+        // this.leveltxt = this.add.text(150, 10, 'LEVEL: ',{ font: '18px Courier'}).setOrigin(0.5, 0.5).setDepth(4);
+        // this.starttxt = this.add.text(183, 200, '3',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4);
+        // this.gameovertxt = this.add.text(183, 200, 'GAME OVER',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
+        // this.goscoretxt = this.add.text(183, 260, 'score',{ font: '60px Courier'}).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
         this.killwall = this.physics.add.sprite(183,500,'');
-        this.pointxt = this.add.text(0, 0,'',{ font: '20px Courier'}).setOrigin(0.5, 0.5);
+        // this.pointxt = this.add.text(0, 0,'',{ font: '20px Courier'}).setOrigin(0.5, 0.5);
         this.killwall.body.setSize(445,20);
         //ANIMS
         this.anims.create({
@@ -440,17 +450,17 @@ class MainScene extends Phaser.Scene {
 
     GameOverScene(){
       console.log(this._KILLCOUNT);
-      
+      this.camera.setBackgroundColor(0x3D3D3D);
+      this.sky.setAlpha(0.01);
+      this.city.setAlpha(0.01);
       console.log('allo ?');
       this.player.visible = false;
       setTimeout(()=>{
           this.goscoretxt.setText(this.scoreValue);
           this.gameovertxt.visible = true;
           this.goscoretxt.visible = true;
-          //this.SetUserInfo(self);
           this.scene.pause();
           this.destroyAll();
-
           const element = document.getElementById('rebtn');
           if (element) {
           element.style.visibility = 'visible';
@@ -584,7 +594,6 @@ class MainScene extends Phaser.Scene {
   //SET ENEMY
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////
-
     setEnemyOne(){
         var rndX = Phaser.Math.Between(50,316);      
         var shootDelay = Phaser.Math.Between(1000,10000);
