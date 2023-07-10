@@ -56,13 +56,14 @@ export class UserService {
 
   UpdateCredits(id : number, credits : number) : Observable<any>{
     const url = `${this.Api_Url}UpdateCredits/${id}`;
-    const body = { credits : credits };
+    const body = { credits: credits };
     return this._httpclient.patch(url, body);
   }
 
   UpdateScore(id : number, score : number) : Observable<any>{
     const url = `${this.Api_Url}UpdateScore/${id}`;
-    const body = {score : score };
+    const body = {score: score };
+    console.log('score? : '+ score);
     return this._httpclient.patch(url, body);
   }
 }

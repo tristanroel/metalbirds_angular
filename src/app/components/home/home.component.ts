@@ -14,6 +14,7 @@ export class HomeComponent {
   user! : Iuser;
   isConnected: Boolean = false;
   tkn! : Itkn;
+  scr? : number;
   constructor(
     private userservice : UserService,
     private storageservice : SessionStorageService
@@ -27,12 +28,18 @@ export class HomeComponent {
       this.userservice.GetUserById(this.storageservice.GetIdTknStorage()).subscribe({
         next : (data) => {
           this.user = data;
+          console.log(data);
         },
         complete : ()=>{
-          if(sessionStorage.getItem('score')){
+          if(sessionStorage.getItem('score')!= null){
+            var scrtxt : string | null = sessionStorage.getItem('score');
             console.log('score');
-            
-            //this.userservice.UpdateScore(this.user.id, parseInt(sessionStorage.getItem('score')))
+            if(scrtxt != null){
+              this.userservice.UpdateScore(this.user.id, parseInt(scrtxt))
+              console.log(parseInt(scrtxt));
+              console.log('score envoyé?');
+              
+            } 
           }
         }
       });
