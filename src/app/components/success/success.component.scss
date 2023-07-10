@@ -1,0 +1,102 @@
+.rpos{
+    font-size: 17px;
+    font-weight: bold;
+    top: 105%
+}
+.success-elem{
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3d3d3d;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    
+}
+.title{
+    width: 85%;
+    margin: 20px;
+    padding-top: 5px;
+    text-align: center;
+    background-color: rgb(54, 113, 194);
+}
+.overflowy{
+    width: 400px;
+    height: 400px; 
+    overflow-y: scroll; /* Ajoute une barre de défilement verticale si nécessaire */
+}
+.success-cmpnt{
+    width: 70%;
+    box-shadow: 1px 1px rgb(54, 113, 194),2px 2px rgb(54, 113, 194),3px 3px rgb(54, 113, 194), 4px 4px rgb(54, 113, 194),5px 5px rgb(54, 113, 194), 6px 6px rgb(54, 113, 194);
+    // box-shadow: 1px 1px rgb(88, 148, 232),2px 2px rgb(88, 148, 232),3px 3px rgb(88, 148, 232), 4px 4px rgb(88, 148, 232),5px 5px rgb(88, 148, 232), 6px 6px rgb(88, 148, 232);
+    // height: 85px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    // flex-wrap: wrap;
+    background-color:rgb(62, 132, 230) ;
+    margin: 10px auto ;
+}
+.elements{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+    // background-color: rgb(54, 113, 194);
+    margin: 5px;
+    text-align: center;
+    // height: 60px;
+}
+.descr{
+    font-size: 8px;
+    width: 40%;
+    padding-top: 5px;
+    color: rgb(194, 207, 225);
+    background-color: green;
+}
+.rank{
+    width: 15%;
+    border:4px solid rgb(203, 209, 222);
+    color:rgb(203, 209, 222);
+    margin: 3px;
+    background-color: rgb(77, 122, 228) ;
+    box-shadow: 1px 1px rgb(157, 176, 221),2px 2px rgb(157, 176, 221);
+}
+.rate{
+    width: 29%;
+}
+
+.titre{
+    background-color: rgb(98, 145, 210);
+    box-shadow: 1px 1px rgb(54, 113, 194),2px 2px rgb(54, 113, 194),3px 3px rgb(54, 113, 194), 4px 4px rgb(54, 113, 194),5px 5px rgb(54, 113, 194), 6px 6px rgb(54, 113, 194);
+    text-shadow: 1px 1px rgb(54, 113, 194),2px 2px rgb(54, 113, 194);
+    margin-bottom: 5px;
+    padding: 3px;
+    color: rgb(242, 248, 248);
+}
+.avatar{
+    background-image: url('../../../assets/img/FacesList.png');
+    background-color: rgb(54, 113, 194);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 4px;
+    width: 72px;
+    height: 72px;
+    //margin: auto;
+    // border: 4px solid white;
+    // margin-bottom: 15px;
+    // margin-top: 30px;
+}
+.one{background-position-x: -135px;}
+.two{background-position-x: -270px;}
+.three{background-position-x: -405px;}
+.nine{background-position-x: -472px;}
+.seven{background-position-x: -67.5px;}
+.four{background-position-x: -540px;}
+.five{background-position-x: -675px;}
+.eight{background-position-x: -742.5px;}
+.six{background-position-x: -810px;}

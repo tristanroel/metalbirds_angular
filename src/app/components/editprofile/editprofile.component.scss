@@ -1,0 +1,104 @@
+.rpos{
+    top:110%;
+    
+}
+
+.editfrm{
+    height: 65%;
+}
+select{
+    width: 70%;
+    //height:30px;
+    font-size: 10px;
+}
+.blck{
+    color : #3d3D3D
+}
+img{
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+}
+.img{
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+}
+.cntry{
+    width: 50%;
+    height: 20px;
+    margin-bottom: 15px;
+    font-size: 10px; 
+}
+.name{
+    font-size: 8px;
+    margin-bottom: 10px;
+}
+.editcmpnt{
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+    background-color: #4f6285;
+    padding: 10px;
+    margin: 10px 14px 10px 10px;
+}
+.editelem{
+    font-size: 10px;
+    width: 50%;
+}
+
+.blckedit{
+    background-color: #5d7cb5;
+}
+.cfrmedit{
+    background-color:  #515151;
+}
+.allvalid{
+      box-shadow: 1px -1px rgb(192, 79, 34),2px -2px rgb(192, 79, 34),3px -3px rgb(192, 79, 34), 4px -4px rgb(192, 79, 34),5px -5px rgb(192, 79, 34), 6px -6px rgb(192, 79, 34);
+    //box-shadow: 1px 1px #3d3D3D, 2px 2px #3d3D3D, 3px 3px #3d3D3D, 4px 4px #3d3D3D;
+    color: #3d3D3D;
+    background-color: #d4a644;
+}
+.pic{
+    width: 80px;
+}
+.full{
+    width: 96%;
+    text-align: center;
+}
+.avatar{
+    background-image: url('../../../assets/img/FacesList.png');
+    background-color: rgb(54, 113, 194);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 4px;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border: 4px solid white;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+.wrap{
+    display: flex;
+    flex-direction: row;
+    //justify-content:left;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: 68%;
+}
+.avtrsct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: green;
+    width: 80px;
+}
+
+.one{background-position-x: -135px;}
+.two{background-position-x: -270px;}
+.three{background-position-x: -405px;}
+.nine{background-position-x: -472px;}
+.seven{background-position-x: -67.5px;}
+.four{background-position-x: -540px;}
+.five{background-position-x: -675px;}
+.eight{background-position-x: -742.5px;}
+.six{background-position-x: -810px;}
+

@@ -1,0 +1,175 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+@font-face {
+    font-family: Press Start 2p;
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    font-weight: 400;
+    font-weight:normal;
+}
+body{
+    background-color: #3D3D3D;
+}
+*{
+    //font-family: 'Inconsolata', monospace;
+    font-family: 'Press Start 2P', cursive;
+    image-rendering: pixelated;
+}
+.backGround{
+    background-color: #515151;
+    width:450px;
+    margin: auto;
+    // position: absolute;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    height: 100vh;
+}
+.roel{
+    font-family: 'Caprasimo', cursive;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white ;
+    transform: translate(-50%, -50%);
+    display: flex;
+    font-size: 50px;
+    text-shadow: 2px 2px red, 4px 4px green, 6px 6px yellow;
+}
+.returnbtn{
+    right: 18px;
+    position: absolute;
+    font-weight: bold;
+    a{
+      color: white;
+      text-decoration: none;
+      text-shadow: 1px -1px rgb(192, 79, 34),2px -2px rgb(192, 79, 34),3px -3px rgb(192, 79, 34), 4px -4px rgb(192, 79, 34),5px -5px rgb(192, 79, 34), 6px -6px rgb(192, 79, 34); 
+    }
+}
+.content{
+    background-color: #3D3D3D;
+    text-align: center;
+    color: rgb(250, 249, 245);
+    width: 400px;
+    height: 40vh;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.backbtn{
+    width: 100px; 
+    height: 50px;
+    font-size: 10px;
+}
+.homebtn{
+    margin: 2px;
+    border : none;
+    width: 150px;
+    font-size: 10px;
+    height: 30px;
+    //border: 2px solid #3D3D3D;
+    color: white;
+    // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+}
+.btn1{
+    background-color: #515151;
+    :hover{
+        background-color: #e26969;
+    }
+}
+.btn2{background-color: #3D3D3D;}
+.btn3{background-color: #3D3D3D}
+.btn4{background-color: #515151;}
+
+.btn3 :hover{
+    background-color: #3367a3;
+}
+.btn2 :hover{
+    background-color: #1f7888;
+}
+.btn4 :hover{
+    background-color: #4360e0;
+}
+
+.form{
+    background-color: #3D3D3D;
+    text-align: center;
+    color: rgb(250, 249, 245);
+    width: 400px;
+    height: 40vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-elem{
+    margin: 5% 0;
+    position: relative;
+    //height:5px;
+    input {
+        /* Styles appliqués à l'élément avec l'ID "mon-id" */
+        background-color: rgb(250, 249, 245);;
+        color: #3D3D3D;
+        border: none;
+        width: 90%;
+        outline: none;
+        padding: 8px;
+        font-size: 12px;
+        text-align: center;
+    }
+    input:focus {
+        border: none;
+      }
+    button{
+        appearance: none;
+        -webkit-appearance: none; /* Pour certains navigateurs WebKit */
+        -moz-appearance: none; /* Pour Firefox */
+        margin: 2px;
+        border : none;
+        width: 150px;
+        font-size: 10px;
+        height: 30px;
+        // background-color: #3D3D3D;
+        //border: 2px solid #3D3D3D;
+        color: aliceblue;
+        // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
+        box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+    }
+}
+// button:visited {
+//     background-color: red;
+//     color: white;
+//   }
+.errormsg{
+    font-size: 10px;
+    color: #e26969;
+    height: 15px;
+}
+.errValidator{
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+  
+
+
+
+

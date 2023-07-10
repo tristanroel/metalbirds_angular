@@ -1,0 +1,48 @@
+<div class="backGround">
+    <div class="content">
+        <div class="returnbtn rpos"><a routerLink="/home">RETURN</a></div>
+        <div id="profile" *ngIf="user != null ">
+        <!-- <div id="profile" *ngIf="user != null "> -->
+            <div class="prflsctn">
+                <div class="infoprfl">{{user.alias}}</div>
+                <div class="infoprfl">{{user.country}}</div>
+                <div class="infoprfl">SCORE : {{user.score}}</div>
+                <div class="infoprfl">CREDITS : {{user.credits}}</div>
+            </div>
+            <div class="prflsctn flexrow">
+                <div *ngIf="user.avatarKey === 1" class="avatar one img"></div>
+                <div *ngIf="user.avatarKey === 2" class="avatar two img"></div>
+                <div *ngIf="user.avatarKey === 3" class="avatar three img"></div>
+                <div *ngIf="user.avatarKey === 4" class="avatar four img"></div>
+                <div *ngIf="user.avatarKey === 5" class="avatar five img"></div>
+                <div *ngIf="user.avatarKey === 6" class="avatar six img"></div>
+                <div *ngIf="user.avatarKey === 7" class="avatar seven img"></div>
+                <div *ngIf="user.avatarKey === 8" class="avatar eight img"></div>
+                <div *ngIf="user.avatarKey === 9" class="avatar nine img"></div>
+                <!-- <div class="avatar one">{{user.avatarKey}}</div> -->
+                <div *ngIf="stats != null">
+                    <div class="relief"><img src={{user.flagUrl}} alt="country flag" width="70" height="50"></div>
+                    <div class="rank">  #{{stats.rank}}</div>
+                </div>
+            </div>
+            <div class="prflsctn" *ngIf="stats != null">
+                <div class="infoprfl">DAMAGE : {{stats.bulletDamage}}</div>
+                <div class="infoprfl">DIES : {{stats.deathNumber}}</div>
+                <div class="infoprfl">KILLS : {{stats.killNumber}}</div>
+                <div class="infoprfl">LEVEL MAX : {{stats.levelMax}}</div>
+            </div>
+            <div class="prflsctn flexrow">
+                <div>
+                    <div><a routerLink="/profile/admin/editUsers"><button class="homebtn2 blck">EDIT-U</button></a></div>
+                    <div><a routerLink="/profile/admin/editFriends"><button class="homebtn2 blck">EDIT-F</button></a></div>
+                    <div><a routerLink="/profile/admin/editSuccess"><button class="homebtn2 blck">EDIT-S</button></a></div>
+                </div>
+                <div>
+                    <div><a routerLink="/success"><button class="homebtn2 blck">SUCCESS</button></a></div>
+                    <div><a routerLink="/friends"><button class="homebtn2 blck">FRIENDS</button></a></div>
+                    <div><a routerLink="/editprofile"><button class="homebtn2 blck">EDIT</button></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

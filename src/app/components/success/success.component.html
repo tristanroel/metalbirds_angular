@@ -1,0 +1,23 @@
+<div class="backGround">
+    <div class="success-elem">
+        <div class="returnbtn rpos"><a routerLink="/profile">RETURN</a></div>
+        <div class="homebtn title">
+            <h5>SUCCESS</h5>
+        </div>
+        <div class="overflowy" *ngIf="successes">
+            <div class="success-cmpnt" *ngFor="let item of successes">
+                <div class="titre">
+                    <div>{{item.title}}</div>
+                </div>
+                <div class="elements">
+                    <div class="descr">{{item.description}}</div>
+                    <div class="rank">
+                        <div style="font-size: 6px;margin: 2px;">RANK</div>
+                        <div>{{item.rank}}</div>
+                    </div>
+                    <div class="rate" [style.width.px]="">"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

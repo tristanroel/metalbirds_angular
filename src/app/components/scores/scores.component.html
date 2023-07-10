@@ -1,0 +1,29 @@
+<div class="backGround">
+    <div class="score-elem">
+        <div class="returnbtns"><a routerLink="/home">RETURN</a></div>
+        <div>
+            <button class="homebtn wrld" type="button" (click)="GetAllScores()" >¨</button>
+            <select class="homebtn blck" id="country" #selectedCountry>
+                <option *ngFor="let country of countries; let i = index">{{ country.name }}</option>
+            </select>
+            <button class="homebtn blck" type="button" (click)="GetScoresByCountry(selectedCountry.value)" >GO</button>
+        </div>
+        <div class="section">
+            <div *ngIf="countries != null">
+                <div class="score-list">
+                    <div class="score-section">RANK</div>
+                    <div class="score-section">NAME</div>
+                    <div class="score-section">COUNTRY</div>
+                    <div class="score-section">SCORE</div>
+                </div>
+                <div class="score-list" *ngFor="let item of theUsers;let i = index">
+                    <div class="rank-section">{{i + 1}}</div>
+                    <div class="score-section">{{item.alias}}</div>
+                    <div class="score-section">{{item.country}}</div>
+                    <div class="score-section"><img src={{item.flagUrl}} alt="country flag" width="30" height="20"></div>
+                    <div class="score-section">{{item.score}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

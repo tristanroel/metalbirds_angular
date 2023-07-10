@@ -1,0 +1,108 @@
+.rpos{
+    top: 140%;
+}
+.flexrow{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.infoprfl{
+    margin: 5px 0;
+}
+.relief{
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+    margin: 5px;
+}
+.prflsctn{
+    font-size: 10px;
+    text-align: left;
+    flex-grow: 1;
+    width: 50%;
+    height: 50%;
+}
+.blck{
+    background-color: #3D3D3D;
+    height: 25px;
+    width: 80px;  
+}
+.blck:hover{
+    background-color: #de6969;
+}
+#profile{
+    background-color: #3D3D3D;
+    color: rgb(250, 249, 245);
+    width: 400px;
+    height: 40vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5%;
+}
+.rank{
+    font-size: 10px;
+    text-align: center;
+    //background-color: #3D3D3D;
+    //box-shadow: 1px 1px #706969, 2px 2px #706969, 3px 3px #706969, 4px 4px #706969;
+    //margin: 5px;
+    //text-shadow: 1px 1px white, 2px 2px white;
+    //color :rgb(86, 137, 209);
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.homebtn2{
+    margin: 2px;
+    border : none;
+    // width: 150px;
+    font-size: 10px;
+    height: 30px;
+    //border: 2px solid #3D3D3D;
+    color: #919191;
+    box-shadow: 1px 1px #919191, 2px 2px #919191, 3px 3px #919191, 4px 4px #919191;
+
+    // text-shadow: 1px 1px #3D3D3D, 2px 2px #3D3D3D, 3px 3px #3D3D3D;
+}
+.homebtn2:hover{
+    color: white;
+    box-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+}
+.prflbtn{
+    text-align: center;
+    height: 25px;
+    width: 80px;
+    font-size: 8px;
+    border-color: white;
+    color: white;
+    background-color: #3D3D3D;
+}
+
+.avatar{
+    background-image: url('../../../assets/img/FacesList.png');
+    background-color: rgb(54, 113, 194);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 4px;
+    width: 72px;
+    height: 72px;
+    box-shadow: 1px 1px rgb(86, 137, 209), 2px 2px rgb(86, 137, 209), 3px 3px rgb(86, 137, 209), 4px 4px rgb(86, 137, 209);
+    margin: 5px;
+
+    //margin: auto;
+}
+.one{background-position-x: -135px;}
+.two{background-position-x: -270px;}
+.three{background-position-x: -405px;}
+.nine{background-position-x: -472px;}
+.seven{background-position-x: -67.5px;}
+.four{background-position-x: -540px;}
+.five{background-position-x: -675px;}
+.eight{background-position-x: -742.5px;}
+.six{background-position-x: -810px;}

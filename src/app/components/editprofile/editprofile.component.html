@@ -1,0 +1,118 @@
+<div *ngIf="user != null" class="form editfrm">
+    <div class="returnbtn rpos"><a routerLink="/profile">RETURN</a></div>
+    <form class="editcmpnt" [formGroup]="countryForm" (ngSubmit)="submitCountryForm()">
+        <div class="wrap" >
+            <div class="cntry">
+                <p>{{user.country}}</p>
+            </div >
+            <div class="cntry">
+                <img *ngIf="!selectedCountry" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/International_Flag_of_Planet_Earth_Budassi_version.svg/1024px-International_Flag_of_Planet_Earth_Budassi_version.svg.png"width="50" height="30">
+                <img *ngIf="selectedCountry" src={{selectedCountry?.flags}} width="50" height="30" alt="" srcset="">
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="editelem">
+                <select class="homebtn blckedit" *ngIf="countries != null" id="country" formControlName="country">
+                    <!-- <option *ngFor="let country of countries; let i = index" [value]="country.name">{{ country.name }}</option> -->
+                    <option *ngFor="let country of countries; let i = index" [ngValue]="{name: country.name, flagUrl : country.flags}">{{ country.name }}</option>
+                </select>
+            </div>
+            <div class="editelem">
+                <button class="homebtn cfrmedit" type="submit" >select</button>
+            </div>
+        </div>
+    </form>
+    <div class="wrap">
+        <form class="editcmpnt"[formGroup]="avatarForm" (ngSubmit)="submitAvatarForm()">
+            <div class="editelem ">
+                    <div *ngIf="imgNbr === 1" class="avatar one img"></div>
+                    <div *ngIf="imgNbr === 2" class="avatar two img"></div>
+                    <div *ngIf="imgNbr === 3" class="avatar three img"></div>
+                    <div *ngIf="imgNbr === 4" class="avatar four img"></div>
+                    <div *ngIf="imgNbr === 5" class="avatar five img"></div>
+                    <div *ngIf="imgNbr === 6" class="avatar six img"></div>
+                    <div *ngIf="imgNbr === 7" class="avatar seven img"></div>
+                    <div *ngIf="imgNbr === 8" class="avatar eight img"></div>
+                    <div *ngIf="imgNbr === 9" class="avatar nine img"></div>
+            </div>
+            <div>
+                <div class="editelem">
+                    <button class="homebtn blckedit pic" type="button" (click)="nextimgnbr()">next img</button>
+                    <!-- <input type="number" id="tentacles" min="1" max="9" placeholder={{imgNbr}} formControlName="avatarUrl"> -->
+                </div>
+                <div class="editelem">
+                    <button class="homebtn cfrmedit pic" type="submit">select</button>
+                </div>
+            </div>
+        </form>
+        <div class="column">
+            <form class="editcmpnt"[formGroup]="aliasForm" (ngSubmit)="submitAliasForm()">
+                <div class="name">
+                    {{user.alias}}
+                </div>
+                <div>
+                    <input class="homebtn full blck" type="text" id="alias" formControlName="alias" placeholder="{{user.alias}}">      
+                </div>
+                <div>
+                    <button class="homebtn cfrmedit full" type="submit" [disabled]="aliasForm.invalid">select</button>
+                </div>
+            </form>
+            <form class="editcmpnt"[formGroup]="emailForm" (ngSubmit)="submitEmailForm()">
+                <div class="name">
+                    {{user.email}}
+                </div>
+                <div>
+                    <input class="homebtn full blck" type="text" id="email" formControlName="email" placeholder="{{user.email}}">      
+                </div>
+                <div>
+                    <button class="homebtn cfrmedit full" type="submit" [disabled]="emailForm.invalid">select</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div><button class="homebtn allvalid" type="button" (click)="updateUser()">valid</button></div> -->
+</div>
+<div class="errValidator rpos">
+    <div *ngIf="aliasForm.controls['alias'].touched && aliasForm.controls['alias'].errors">
+        <div class="errormsg"><p>{{aliasForm.controls['alias'].errors['aliasRegex']}}</p></div>
+    </div>
+    <div *ngIf="emailForm.controls['email'].touched && emailForm.controls['email'].errors">
+        <div class="errormsg"><p>{{emailForm.controls['email'].errors['emailRegex']}}</p></div>
+    </div>
+    <!-- <div *ngIf="passwdForm.controls['password'].touched && passwdForm.controls['password'].errors">
+        <div class="errormsg"><p>{{passwdForm.controls['password'].errors['passwdRegex']}}</p></div>
+    </div> -->
+</div>
+    <!-- <div>
+        <div>
+            <input type="text" id="alias" formControlName="aliasForm.get('alias')" placeholder="{{user.alias}}">
+        </div> -->
+        <!-- <div>
+            <label for="email">Email:</label>
+            <input type="text" id="alias" [formControl]="aliasForm.get('alias')" placeholder="{{user.alias}}">
+        </div> -->
+    <!-- </div> -->
+       
+            <!-- <div class="avtrsct">
+                <div>
+                    <div *ngIf="imgNbr === 1" class="avatar one"></div>
+                    <div *ngIf="imgNbr === 2" class="avatar two"></div>
+                    <div *ngIf="imgNbr === 3" class="avatar three"></div>
+                    <div *ngIf="imgNbr === 4" class="avatar four"></div>
+                    <div *ngIf="imgNbr === 5" class="avatar five"></div>
+                    <div *ngIf="imgNbr === 6" class="avatar six"></div>
+                    <div *ngIf="imgNbr === 7" class="avatar seven"></div>
+                    <div *ngIf="imgNbr === 8" class="avatar eight"></div>
+                    <div *ngIf="imgNbr === 9" class="avatar nine"></div>
+                </div>
+                <div>
+                    
+                    <button (click)="nextimgnbr()">next img</button>
+                </div> -->
+            <!-- </div> -->
+            <!-- Options de la liste déroulante -->
+        <!-- </div> -->
+        <!-- <button type="submit">Submit</button> -->
+   
+    <!-- <div class="returnbtn rpos"><a routerLink="/profile">RETURN</a></div> -->
+<!-- </div> -->

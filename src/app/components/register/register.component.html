@@ -1,0 +1,32 @@
+<div class="backGround">
+    <div class="form">
+        <div class="returnbtn rpos"><a routerLink="/home">RETURN</a></div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-elem">
+              <input type="text" id="alias" formControlName="alias" placeholder="USERNAME"/>
+            </div>
+            <div class="form-elem">
+                <input type="email" id="email" formControlName="email" placeholder="EMAIL" />
+            </div>
+            <div class="form-elem">
+                <input type="password" id="password" formControlName="password" placeholder="PASSWORD"/>
+            </div>
+            <div class="form-elem">
+                <button type="submit" [disabled]="registerForm.invalid">Register</button>
+            </div>
+        </form>
+    
+        <!-- ERROR MESSAGE VALIDATORS -->
+        <div class="errValidator">
+            <div *ngIf="registerForm.controls['alias'].touched && registerForm.controls['alias'].errors">
+                <div class="errormsg"><p>{{registerForm.controls['alias'].errors['aliasRegex']}}</p></div>
+            </div>
+            <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].errors">
+                <div class="errormsg"><p>{{registerForm.controls['email'].errors['emailRegex']}}</p></div>
+            </div>
+            <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].errors">
+                <div class="errormsg"><p>{{registerForm.controls['password'].errors['passwdRegex']}}</p></div>
+            </div>
+        </div>
+    </div>
+</div>

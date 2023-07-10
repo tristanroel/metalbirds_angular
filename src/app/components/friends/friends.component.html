@@ -1,0 +1,32 @@
+<div class="backGround">
+    <div class="friend-elem">
+        <div class="returnbtn rpos"><a routerLink="/profile">RETURN</a></div>
+        <div class="homebtn title">
+            <h5>FRIENDS</h5>
+        </div>
+        <div class="overflowy">
+            <div class="friend-cmpnt" *ngFor="let item of friends">
+                <div class="elements">
+                    <div style="width: 100%;">
+                        <div>{{users[item.friend_Id - 1].alias}}</div>
+                    </div>
+                    <div>
+                        <div class="avatar one" *ngIf="users[item.friend_Id - 1].avatarKey === 1" ></div>
+                        <div class="avatar two" *ngIf="users[item.friend_Id - 1].avatarKey === 2" ></div>
+                        <div class="avatar three" *ngIf="users[item.friend_Id - 1].avatarKey === 3" ></div>
+                        <div class="avatar four" *ngIf="users[item.friend_Id - 1].avatarKey === 4" ></div>
+                        <div class="avatar five" *ngIf="users[item.friend_Id - 1].avatarKey === 5" ></div>
+                        <div class="avatar six" *ngIf="users[item.friend_Id - 1].avatarKey === 6" ></div>
+                        <div class="avatar seven" *ngIf="users[item.friend_Id - 1].avatarKey === 7" ></div>
+                        <div class="avatar eight" *ngIf="users[item.friend_Id - 1].avatarKey === 8" ></div>
+                        <div class="avatar nine" *ngIf="users[item.friend_Id - 1].avatarKey === 9" ></div>
+                    </div>
+                </div>
+                <div class="elements">
+                    <div><img class="flag" src="{{users[item.friend_Id - 1].flagUrl}}" alt="country flag" width="80" height="60"></div>
+                    <div class="scr">SCORE : {{users[item.friend_Id - 1].score}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
