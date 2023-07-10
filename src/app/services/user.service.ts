@@ -59,12 +59,15 @@ export class UserService {
     const body = { credits: credits };
     return this._httpclient.patch(url, body);
   }
+  // UpdateScore(){
+  //   return this._httpclient.post('https://localhost:5001/api/User/UpdateScore/1', 12345)
+  // }
 
   UpdateScore(id : number, score : number) : Observable<any>{
     const url = `${this.Api_Url}UpdateScore/${id}`;
-    const body = {score: score };
-    console.log('score? : '+ score);
-    return this._httpclient.patch(url, body);
+    const body = { score: score };
+    
+    return this._httpclient.patch<any>(url, body);
   }
 }
   

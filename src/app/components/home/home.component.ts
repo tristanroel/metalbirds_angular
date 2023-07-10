@@ -33,9 +33,14 @@ export class HomeComponent {
         complete : ()=>{
           if(sessionStorage.getItem('score')!= null){
             var scrtxt : string | null = sessionStorage.getItem('score');
-            console.log('score');
             if(scrtxt != null){
-              this.userservice.UpdateScore(this.user.id, parseInt(scrtxt))
+              //this.user.score = parseInt(scrtxt);
+              // this.userservice.UpdateScore(this.user.id, this.user.score).subscribe({
+              this.userservice.UpdateScore(1, 98).subscribe({
+                next : (data : string) =>{
+                  console.log(data);
+                }
+              })
               console.log(parseInt(scrtxt));
               console.log('score envoyé?');
               
