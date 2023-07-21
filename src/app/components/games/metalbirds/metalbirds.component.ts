@@ -68,6 +68,8 @@ class MainScene extends Phaser.Scene {
     popenemyEight! : Phaser.Time.TimerEvent;
     popenemyNine! : Phaser.Time.TimerEvent;
     popenemyTen! : Phaser.Time.TimerEvent;
+    popenemyEleven! : Phaser.Time.TimerEvent;
+    popenemyTwelve! : Phaser.Time.TimerEvent;
     popbossOne! : Phaser.Time.TimerEvent;
     popBonusCounter : number = 0; //pop weapon counter
     
@@ -172,7 +174,7 @@ class MainScene extends Phaser.Scene {
         this.sky.alpha = 0.4;
         //TEXT
         this.scoretext =  this.add.bitmapText(300, 12,'customfont','score:0',10).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
-        this.leveltxt =  this.add.bitmapText(150, 12,'customfont','level:0',10).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
+        this.leveltxt =  this.add.bitmapText(183, 12,'customfont','level:0',10).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
         this.starttxt =  this.add.bitmapText(183, 200,'customfont2','3',60).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4);
         this.gameovertxt = this.add.bitmapText(183, 200,'customfont2','GAME OVER',64).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
         this.goscoretxt = this.add.bitmapText(183, 246,'customfont2','',60).setTintFill(0xffffff).setOrigin(0.5, 0.5).setDepth(4).setVisible(false);
@@ -299,10 +301,12 @@ class MainScene extends Phaser.Scene {
         this.popenemyFour = this.time.addEvent({delay : 3000 , callback: ()=> this.setEnemyFour() , loop : true, paused : true,});
         this.popenemyFive = this.time.addEvent({delay : 10000, callback: ()=> this.setEnemyFive() , loop : true, paused : true,});
         this.popenemySix = this.time.addEvent({delay : 10000 , callback: ()=> this.setEnemySix() , loop : true, paused : true,});
-        this.popenemySeven = this.time.addEvent({delay : 2000 , callback: ()=> this.setEnemySeven() , loop : true, paused : true});
+        this.popenemySeven = this.time.addEvent({delay : 3000 , callback: ()=> this.setEnemySeven() , loop : true, paused : true});
         this.popenemyEight = this.time.addEvent({delay : 10000 , callback: ()=> this.setEnemyEight() , loop : true, paused : true});
         this.popenemyNine = this.time.addEvent({delay : 100000 ,callback: ()=> this.setEnemyNine() , loop : true, paused : false});
-        this.popenemyTen = this.time.addEvent({delay : 2000 ,callback: ()=> this.setEnemyTen() , loop : true , paused : true});
+        this.popenemyTen = this.time.addEvent({delay : 3000 ,callback: ()=> this.setEnemyTen() , loop : true , paused : true});
+        this.popenemyEleven = this.time.addEvent({delay : 80000 ,callback: ()=> this.setEnemyEleven() , loop : true , paused : true});
+        this.popenemyTwelve = this.time.addEvent({delay : 6000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : true});
         //IMPACT COLLISION
         const self = this;
         //ENEMY DAMAGE
@@ -367,28 +371,38 @@ class MainScene extends Phaser.Scene {
             
             switch (box.data.list.typeCount) {
                 case 0: 
-                (plyr.data.list.health >= self.maxHealth)? plyr.data.list.health = plyr.data.list.health : plyr.data.list.health += 1;
+                if(plyr.data.list.health >= self.maxHealth){
+                    plyr.data.list.health = plyr.data.list.health
+                self.textPoint('FULL', plyr);
+                }else{
+                plyr.data.list.health += 1;
+                self.textPoint('+', plyr);
+                }    
                 console.log('fruits');
                 box.destroy();
                     break;
                 case 1: self.armEvoCount += 1;
                 console.log('weapon+');
                 box.destroy();
+                (self.armEvoCount >= 8)? self.textPoint('FULL', plyr) : self.textPoint('UPGRADE', plyr);
                     break;
                 case 2: self.timingShoot.timeScale += 0.1;
                 self._WEAPONUPGRADE_SPEED += 1;
                 self.weaponUp.clear(true,true);
+                self.textPoint('LEVEL UP !', plyr)
                 console.log(box);
                     break;
                 case 3: self.playerDamage += 0.1;
                 self._WEAPONUPGRADE_DGTS += 1;
                 self.weaponUp.clear(true,true);
+                self.textPoint('LEVEL UP !', plyr)
                 console.log(box);
                     break;
                 case 4: self.maxHealth += 1; 
                 self._HEALTHPGRADE += 1;
                 plyr.data.list.health += 1;
                 self.weaponUp.clear(true,true);
+                self.textPoint('LEVEL UP !', plyr)
                 console.log(box);
                     break;
                 default:break;
@@ -546,11 +560,11 @@ class MainScene extends Phaser.Scene {
         //#endregion
 
         //this.setBossFour();
-        // this.setEnemyEight()
+        //this.setEnemyTwelve()
         //var testObj = this.physics.add.sprite(183, 350,'largebullet', 238).setDepth(2).setScale(2);
         //testObj.anims.play('startburst',true);
         //this.setBossOne()
-        //this.popUpgrade();
+        //this.setDragon();
         this.StartScene();
         //END CREATE
     }
@@ -629,6 +643,8 @@ class MainScene extends Phaser.Scene {
         this.popenemyEight.timeScale = this.levelValue ;
         this.popenemyNine.timeScale = this.levelValue ;
         this.popenemyTen.timeScale = this.levelValue ;
+        this.popenemyEleven.timeScale = this.levelValue ;
+        this.popenemyTwelve.timeScale = this.levelValue ;
         
         switch (this.KILLCOUNTLEVEL) {
         case 0 :
@@ -646,6 +662,9 @@ class MainScene extends Phaser.Scene {
         this.popenemyOne.paused = true;
         this.popenemySix.paused = true;
             break;
+        case this.levelValue * 15: console.log(this.levelValue * 15 +" Kill");
+        (this.levelValue >= 3) ? this.popenemyTwelve.paused = false : '';
+            break;
         case this.levelValue * 20:console.log(this.levelValue * 20 +" Kill");
         this.cloudOpacityChange();
         this.popenemyThree.paused = false;
@@ -655,6 +674,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyTwo.paused = true;
         this.popenemyFive.paused = true;
         this.popenemySix.paused = true;
+        this.popenemyTwelve.paused = true;
             break;
         case this.levelValue * 25: console.log(this.levelValue * 25 +" Kill");
 
@@ -663,6 +683,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyFive.paused = true;
         this.popenemySix.paused = true;
         this.popenemySeven.paused = true;
+        this.popenemyTwelve.paused = true;
             break;
         case this.levelValue * 30: console.log(this.levelValue * 30 +" Kill");
         this.cloudOpacityChange();
@@ -676,6 +697,7 @@ class MainScene extends Phaser.Scene {
         this.popenemySix.paused = true;
         this.popenemySeven.paused = true;
         this.popenemyNine.paused = true;
+        this.popenemyTwelve.paused = true;
             break;
         case this.levelValue * 40: console.log(this.levelValue * 40 +" Kill");
         this.cloudOpacityChange();
@@ -689,6 +711,7 @@ class MainScene extends Phaser.Scene {
         this.popenemySeven.paused = true;
         this.popenemyEight.paused = true;
         this.popenemyNine.paused = true;
+        this.popenemyTwelve.paused = true;
             break;
         case this.levelValue * 50: console.log(this.levelValue * 50 +" Kill");
         this.cloudOpacityChange();
@@ -702,6 +725,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyEight.paused = true;
         this.popenemyNine.paused = true;
         this.popenemyTen.paused = true;
+        this.popenemyTwelve.paused = true;
             break;
         default:
             break;
@@ -744,6 +768,8 @@ class MainScene extends Phaser.Scene {
                 this.popBonusCounter = 0;
                 this.city.alpha = 0.2;
                 this.popenemyNine.paused = true;
+                this.popenemyEleven.paused = true;
+                this.popenemyTwelve.paused = true;
                 this.reactor.visible = true;
                 const value = Math.round(tween.getValue());
                 this.backGroundSpeed = value;
@@ -756,6 +782,8 @@ class MainScene extends Phaser.Scene {
                 this.backGroundSpeed = 0;
                 cloudAccelerate.stop();
                 this.popenemyNine.paused = false;
+                this.popenemyEleven.paused = false;
+                this.popenemyTwelve.paused = false;
                 this.itsIncrementNextLvlValue = true;
             }
         });
@@ -837,7 +865,8 @@ class MainScene extends Phaser.Scene {
                 this.ispopBoss = false;
                     break;
                 case 2: this.setBossTwo();
-                this.ispopBoss = false;           
+                this.ispopBoss = false;
+                this.popenemyEleven.paused = false;           
                     break;
                 case 3: this.setBossThree();
                 this.ispopBoss = false;
@@ -858,7 +887,7 @@ class MainScene extends Phaser.Scene {
 
     shootAction(){
       if(this.bullets){
-        //this.armEvoCount = 7
+        //this.armEvoCount = 8
         switch (this.armEvoCount) {
         case 1: 
             var fire = this.bullets.create(this.player.body.position.x + 3, this.player.body.position.y,'bullet', 404).setSize(3, 6).setOffset(7,5).setScale(2);
@@ -1019,7 +1048,69 @@ class MainScene extends Phaser.Scene {
             fire55.body.velocity.y = -300;
             fire6.body.velocity.y = -300;
             break;
-        case 8 : this.armEvoCount = 7;
+            case 8:
+                //
+                var fire0 = this.bullets.create(this.player.body.position.x + 28, this.player.body.position.y,'bullet', 404).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire00 = this.bullets.create(this.player.body.position.x + 3, this.player.body.position.y,'bullet', 281).setSize(3, 6).setOffset(7,5).setScale(2);
+                //dev LEFT
+                var fire02 = this.bullets.create(this.player.body.position.x - 24, this.player.body.position.y,'bullet', 404).setSize(3, 6).setOffset(7,5).setScale(2);
+                //DIAG BAS right
+                var fire = this.bullets.create(this.player.body.position.x + 8, this.player.body.position.y,'bullet', 764, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire1 = this.bullets.create(this.player.body.position.x, this.player.body.position.y + 10,'bullet', 678, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                //DIAG BAS Left
+                var fire2 = this.bullets.create(this.player.body.position.x - 2, this.player.body.position.y,'bullet', 764, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire22 = this.bullets.create(this.player.body.position.x, this.player.body.position.y + 10,'bullet', 678, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire25 = this.bullets.create(this.player.body.position.x, this.player.body.position.y + 8,'bullet', 675, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire3 = this.bullets.create(this.player.body.position.x + 8, this.player.body.position.y,'bullet', 763, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire32 = this.bullets.create(this.player.body.position.x, this.player.body.position.y +30,'bullet', 678, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire33 = this.bullets.create(this.player.body.position.x , this.player.body.position.y +20,'bullet', 767, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire35 = this.bullets.create(this.player.body.position.x, this.player.body.position.y + 8,'bullet', 675, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire4 = this.bullets.create(this.player.body.position.x - 2, this.player.body.position.y,'bullet', 763, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire42 = this.bullets.create(this.player.body.position.x, this.player.body.position.y +30,'bullet', 678, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire44 = this.bullets.create(this.player.body.position.x, this.player.body.position.y + 20,'bullet', 767, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire45 = this.bullets.create(this.player.body.position.x - 24, this.player.body.position.y,'bullet', 625, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire5 = this.bullets.create(this.player.body.position.x + 14, this.player.body.position.y,'bullet', 404, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire55 = this.bullets.create(this.player.body.position.x + 36, this.player.body.position.y,'bullet', 625, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                var fire6 = this.bullets.create(this.player.body.position.x - 10, this.player.body.position.y,'bullet', 404, true).setSize(3, 6).setOffset(7,5).setScale(2);
+                setTimeout(() => {fire00.destroy();fire0.destroy();fire02.destroy();fire.destroy();fire1.destroy();fire2.destroy();fire22.destroy();fire25.destroy();fire3.destroy();fire32.destroy();fire33.destroy();fire35.destroy();fire4.destroy();fire42.destroy();fire44.destroy();fire45.destroy();fire5.destroy();fire55.destroy();fire6.destroy();}, 1000);
+                fire00.body.velocity.y = -300;
+                fire0.body.velocity.y = -300;
+                fire02.body.velocity.y = -300;
+                fire.body.velocity.x = 120;
+                fire.body.velocity.y = 300;
+                fire1.body.velocity.x = 300;
+                fire1.body.velocity.y = 120;
+                fire.flipX = true;
+                fire1.flipX = true;
+                fire2.body.velocity.x = -120;
+                fire2.body.velocity.y = 300;
+                fire22.body.velocity.x = -300;
+                fire22.body.velocity.y = 120;
+                fire25.body.velocity.x = -280;
+                fire25.body.velocity.y = 300;
+                fire3.body.velocity.y = -300;
+                fire3.body.velocity.x = 180;
+                fire32.body.velocity.x = 200;
+                fire32.body.velocity.y = -200;
+                fire33.body.velocity.x = 180;;
+                fire35.body.velocity.x = 280;
+                fire35.body.velocity.y = 300;
+                fire35.flipX = true;
+                fire4.body.velocity.x = -180;
+                fire4.body.velocity.y = -300;
+                fire42.body.velocity.x = -200;
+                fire42.body.velocity.y = -200;
+                fire4.flipX = true;
+                fire44.body.velocity.x = -180;;
+                fire45.flipX = true;
+                fire45.body.velocity.x = -180;
+                fire45.body.velocity.y = -300;
+                fire5.body.velocity.y = -300;
+                fire55.body.velocity.x = 180;
+                fire55.body.velocity.y = -300;
+                fire6.body.velocity.y = -300;
+                break;
+        case 9 : this.armEvoCount = 8;
             break;
         case 99 : 
             break;
@@ -1278,6 +1369,54 @@ class MainScene extends Phaser.Scene {
         this.ShootEnemyTen(enemy);  
     }
 
+    setEnemyEleven(){
+        // var rndyvel = Phaser.Math.Between(3000,8000);         
+        let rnd = Math.floor(Math.random() * 2); // 0 | 1
+        let posX = (rnd == 0)? 0 : 366;
+        console.log(rnd);
+        var enemy = this.enemies.create(posX,200,'fatbirds',7);
+        enemy.body.setSize(70, 20);
+        enemy.setData('health', 50 + this.levelValue);
+        this.tweens.add({
+            targets: enemy,
+            x : {value : 173 , ease : 'back.out'},
+            y : {value : 50 , ease : 'quint.in'},
+            duration : 8000
+        });
+        enemy.body.velocity.y = 15;
+        setTimeout(() => {
+            if(enemy.data != undefined){
+                //this.ShootEnemyFour(enemy);
+                this.ShootAnyRightBottom(enemy,0,0,150,'bullet',211,600,5,5000,true)
+            }
+        }, 1500);
+    }
+
+    setEnemyTwelve(){
+        var rndx = Phaser.Math.Between(50,316);         
+        let rnd = Math.floor(Math.random() * 2); // 0 | 1
+        let posX = (rnd == 0)? 50 : 316;
+        console.log(rnd);
+        var enemy = this.enemies.create(posX,400,'fatbirds',5);
+        enemy.setData('health', 20 + this.levelValue);
+        enemy.body.setSize(70, 20);
+        enemy.flipY = true;
+        this.tweens.add({
+            targets: enemy,
+            x : {value : rndx , ease : 'back.out'},
+            y : {value : 50 , ease : 'circle.in'},
+            duration : 8000,
+            onComplete: (tween:any) => {
+            }
+        });
+        setTimeout(() => {
+            if(enemy.data != undefined){
+                enemy.body.velocity.y = 80;
+                this.ShootEnemyFour(enemy);
+            }
+        }, 1500);
+    }
+
     setBossOne(){
         var enemy = this.enemies.create(173,0,'fatbirds',3).setDepth(2);
         var canon = this.bullets2.create(173,0,'bullet',9);
@@ -1476,6 +1615,8 @@ class MainScene extends Phaser.Scene {
         }
         this.ShootDragon(this.drgBody[19]);
         this.ShootEnemyFive(this.drgBody[9]);
+        this.ShootAnyRightBottom(this.drgBody[14],0,0,150,'bullet',385,800,6,10000,true);
+        this.ShootAnyRightBottom(this.drgBody[14],0,0,100,'bullet',381,200,2,3000,true);
         //destroyDragon(drgBody);
     };
     //SHOOT
@@ -1816,7 +1957,7 @@ class MainScene extends Phaser.Scene {
                 this.chronotxt.setAlpha(1);
                 this.buttonMenuIsVisible(true,true)
                 this.mask.setFrame(9);
-                this.mask.setAlpha(0.95);
+                this.mask.setAlpha(1);
                 this.AllEnemyPaused();
             }else{
                 console.log("killcnt" + this.KILLCOUNTLEVEL);
@@ -1859,6 +2000,8 @@ class MainScene extends Phaser.Scene {
         this.popenemyEight.paused = true;
         this.popenemyNine.paused = true;
         this.popenemyTen.paused = true;
+        this.popenemyEleven.paused = true;
+        this.popenemyTwelve.paused = true;
     }
 
     formatChronoTime(time: number): string {
