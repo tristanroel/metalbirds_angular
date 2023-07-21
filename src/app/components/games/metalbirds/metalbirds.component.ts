@@ -306,7 +306,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyNine = this.time.addEvent({delay : 100000 ,callback: ()=> this.setEnemyNine() , loop : true, paused : false});
         this.popenemyTen = this.time.addEvent({delay : 3000 ,callback: ()=> this.setEnemyTen() , loop : true , paused : true});
         this.popenemyEleven = this.time.addEvent({delay : 80000 ,callback: ()=> this.setEnemyEleven() , loop : true , paused : true});
-        this.popenemyTwelve = this.time.addEvent({delay : 6000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : true});
+        this.popenemyTwelve = this.time.addEvent({delay : 15000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : false});
         //IMPACT COLLISION
         const self = this;
         //ENEMY DAMAGE
@@ -435,8 +435,8 @@ class MainScene extends Phaser.Scene {
         this.btnQuit.on('pointerup', function (event : any){
             //self.btnQuit.setTint(0xff0000);
             self.btnQuit.setFrame(5);
-            // window.location.href = '/home';/metalbirds_angular/metalbirds
-            window.location.href = '/metalbirds_angular/home';
+            // window.location.href = '/home';
+            window.location.href = '/metalbirds_angular/';
         });
         this.btnQuit.on('pointerover', function (event : any){self.btnQuit.setFrame(4);});
         this.btnQuit.on('pointerout', function (event : any){
@@ -820,17 +820,17 @@ class MainScene extends Phaser.Scene {
         this.player.setVelocity(0); 
         this.player.setFrame(0);                  
         if(this.cursor!.up.isDown || this.touchup){                         
-            this.player.setVelocityY(-80);
+            this.player.setVelocityY(-100);
         }
         if(this.cursor!.down.isDown || this.touchdown){                         
-            this.player.setVelocityY(80);
+            this.player.setVelocityY(100);
         }                      
         if(this.cursor!.left.isDown || this.touchleft){
-            this.player.setVelocityX(-80);
+            this.player.setVelocityX(-100);
             this.player.setFrame(1);
         }                 
         if(this.cursor!.right.isDown || this.touchright){
-            this.player.setVelocityX(80);
+            this.player.setVelocityX(100);
             this.player.setFrame(3);
         }  
     }
