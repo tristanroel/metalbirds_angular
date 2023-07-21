@@ -435,7 +435,8 @@ class MainScene extends Phaser.Scene {
         this.btnQuit.on('pointerup', function (event : any){
             //self.btnQuit.setTint(0xff0000);
             self.btnQuit.setFrame(5);
-            window.location.href = '/home';
+            // window.location.href = '/home';/metalbirds_angular/metalbirds
+            window.location.href = '/metalbirds_angular/home';
         });
         this.btnQuit.on('pointerover', function (event : any){self.btnQuit.setFrame(4);});
         this.btnQuit.on('pointerout', function (event : any){
