@@ -21,7 +21,7 @@
               "phaser",
               "webpack"
             ],
-            "outputPath": "docs",
+            "outputPath": "dist/metalbirds_angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
