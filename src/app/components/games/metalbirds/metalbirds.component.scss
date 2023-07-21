@@ -2,27 +2,44 @@
 *{
     image-rendering: pixelated;
 }
-@font-face {
-    font-family: Press Start 2P;
-    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-    //font-weight: 400;
-    font-weight:normal;
-}
-#gamenu{
-    //background-color: #3D3D3D;
-    color: rgb(250, 249, 245);
-    width: 400px;
-    height: 10vh;
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    flex-wrap: wrap;
-    // padding: 5%;
-}
-#rebtn{
-    visibility: hidden;
-}
+// #gamenu{
+//     //background-color: #3D3D3D;
+//     // color: rgb(250, 249, 245);
+//     background-color: aqua;
+//     width: 100%;
+//     height: 10vh;
+//     position:absolute;
+//     top: 60%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     display: flex;
+//     flex-direction:row;
+//     justify-content:space-between;
+//     flex-wrap: wrap;
+//     // padding: 5%;
+// }
+// .btns{
+//     // margin: 0  45px;
+//     //position: relative;
+//     border: none;
+//     background-color: green;
+//     background-image:url('../../../../assets/img/Btns2.png');
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     width: 10.5vh;
+//     height: 6vh;
+//     //height: 43px;
+//     // width: 70px;
+// }
+// #rebtn{
+//     visibility: hidden;
+//     background-position-x: -34vh;
+// }
+
+//#ctnbtn{
+    // visibility: hidden;
+    //background-position-y: 70px;
+//}
+// #space{
+//     width: 160px;
+// }

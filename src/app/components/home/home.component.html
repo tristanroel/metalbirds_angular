@@ -1,4 +1,6 @@
 <div class="backGround">
+    <div class="title"></div>
+    <div style="color: aliceblue;position:absolute;font-size: 8px;letter-spacing: 5px;margin-left: 10px;top: 5px;">version 0.1</div>
     <div class="content">
         <div id="userInfo" *ngIf="isConnected">
             <div *ngIf="user != null">
@@ -11,17 +13,26 @@
             <div class="homediv">
                 <button routerLink="/metalbirds" class="homebtn btn1">PLAY</button>
             </div>
-            <div class="homediv">
+            <div class="homediv" *ngIf="isConnected">
                 <button *ngIf="!isConnected" routerLink="/login" class="homebtn btn2" (click)="login()">LOGIN</button>
                 <button class="homebtn btn2" *ngIf="isConnected" (click)="logout()">LOGOUT</button>
             </div>
-            <div class="homediv">
+            <div class="homediv" *ngIf="isConnected">
                 <button *ngIf="isConnected" routerLink="/profile" class="homebtn btn2">PROFILE</button>
                 <button *ngIf="!isConnected" routerLink="/register" class="homebtn btn3">REGISTER</button>
             </div>
-            <div class="homediv">
+            <div class="homediv" *ngIf="isConnected">
                 <a routerLink="/scores"><button class="homebtn btn4">SCORES</button></a>
             </div>
         </div>
     </div>
 </div>
+<footer>
+    <div class="tr"></div>
+    <div style="text-align:right;display: flex;flex-direction: column;justify-content: center;">
+        <div style="letter-spacing: 10px;" class="footinfo">T.ROEL©</div>
+        <!-- <div style="letter-spacing: 6px;"class="footinfo">by tristan roel</div> -->
+        <div style="letter-spacing: 8.8px;" class="footinfo">belgium 2023</div>
+        <div style="letter-spacing: 0.5px;padding-right: 8px;"class="footinfo">tristanroel@outlook.com </div>
+    </div>
+</footer>
