@@ -306,7 +306,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyNine = this.time.addEvent({delay : 100000 ,callback: ()=> this.setEnemyNine() , loop : true, paused : false});
         this.popenemyTen = this.time.addEvent({delay : 3000 ,callback: ()=> this.setEnemyTen() , loop : true , paused : true});
         this.popenemyEleven = this.time.addEvent({delay : 80000 ,callback: ()=> this.setEnemyEleven() , loop : true , paused : true});
-        this.popenemyTwelve = this.time.addEvent({delay : 15000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : false});
+        this.popenemyTwelve = this.time.addEvent({delay : 15000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : true});
         //IMPACT COLLISION
         const self = this;
         //ENEMY DAMAGE
