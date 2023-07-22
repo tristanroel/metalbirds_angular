@@ -561,7 +561,7 @@ class MainScene extends Phaser.Scene {
         //#endregion
 
         //this.setBossFour();
-        this.setEnemyThree()
+        //this.setEnemyThree()
         //var testObj = this.physics.add.sprite(183, 350,'largebullet', 238).setDepth(2).setScale(2);
         //testObj.anims.play('startburst',true);
         //this.setBossOne()
@@ -2107,7 +2107,6 @@ export class MetalbirdsComponent implements OnDestroy,OnInit{
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
       scene: [ MainScene as any],
-      
       //parent: 'gameContainer',
       physics: {
         default: 'arcade',
