@@ -306,7 +306,7 @@ class MainScene extends Phaser.Scene {
         this.popenemyNine = this.time.addEvent({delay : 100000 ,callback: ()=> this.setEnemyNine() , loop : true, paused : false});
         this.popenemyTen = this.time.addEvent({delay : 3000 ,callback: ()=> this.setEnemyTen() , loop : true , paused : true});
         this.popenemyEleven = this.time.addEvent({delay : 80000 ,callback: ()=> this.setEnemyEleven() , loop : true , paused : true});
-        this.popenemyTwelve = this.time.addEvent({delay : 15000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : true});
+        this.popenemyTwelve = this.time.addEvent({delay : 30000 ,callback: ()=> this.setEnemyTwelve() , loop : true , paused : true});
         //IMPACT COLLISION
         const self = this;
         //ENEMY DAMAGE
@@ -561,7 +561,7 @@ class MainScene extends Phaser.Scene {
         //#endregion
 
         //this.setBossFour();
-        //this.setEnemyTwelve()
+        this.setEnemyThree()
         //var testObj = this.physics.add.sprite(183, 350,'largebullet', 238).setDepth(2).setScale(2);
         //testObj.anims.play('startburst',true);
         //this.setBossOne()
@@ -633,6 +633,7 @@ class MainScene extends Phaser.Scene {
     } 
 
     SceneAction(){
+        let rnd = Math.floor(Math.random() * 2); // 0 | 1
         //console.log(this.popenemyOne);
         this.popenemyOne.timeScale = this.levelValue ;
         this.popenemyTwo.timeScale = this.levelValue ;
@@ -649,7 +650,8 @@ class MainScene extends Phaser.Scene {
         
         switch (this.KILLCOUNTLEVEL) {
         case 0 :
-        this.popenemyOne.paused = false;
+        // this.popenemyOne.paused = false;
+        (this.levelValue >= 2 && rnd == 0) ? this.popenemyTwelve.paused = false : this.popenemyOne.paused = false;
         this.popenemySix.paused = false;
 
         this.ispopBoss = true;
@@ -662,9 +664,7 @@ class MainScene extends Phaser.Scene {
 
         this.popenemyOne.paused = true;
         this.popenemySix.paused = true;
-            break;
-        case this.levelValue * 15: console.log(this.levelValue * 15 +" Kill");
-        (this.levelValue >= 3) ? this.popenemyTwelve.paused = false : '';
+        this.popenemyTwelve.paused = true;
             break;
         case this.levelValue * 20:console.log(this.levelValue * 20 +" Kill");
         this.cloudOpacityChange();
@@ -770,7 +770,6 @@ class MainScene extends Phaser.Scene {
                 this.city.alpha = 0.2;
                 this.popenemyNine.paused = true;
                 this.popenemyEleven.paused = true;
-                this.popenemyTwelve.paused = true;
                 this.reactor.visible = true;
                 const value = Math.round(tween.getValue());
                 this.backGroundSpeed = value;
@@ -784,7 +783,6 @@ class MainScene extends Phaser.Scene {
                 cloudAccelerate.stop();
                 this.popenemyNine.paused = false;
                 this.popenemyEleven.paused = false;
-                this.popenemyTwelve.paused = false;
                 this.itsIncrementNextLvlValue = true;
             }
         });
@@ -1547,7 +1545,7 @@ class MainScene extends Phaser.Scene {
                 });
                 //this.ShootBossOne(canon, enemy);
                 //this.ShootEnemyFive(enemy);
-                this.ShootAnyRightBottom(enemy, 0, 0,220,'bullet',254,2000,5,1000,true);
+                this.ShootAnyRightBottom(enemy, 0, 0,150,'bullet',254,2000,5,2000,true);
                 this.ShootAnyRightBottom(enemy, -80, 0,150,'bullet',253,1200,5,5000,false);
                 this.ShootAnyRightBottom(enemy, 80, 0,150,'bullet',253,1200,5,7000,false);
                 //this.ShootAnyRightBottom(enemy, 0, 0,200,'bullet',275,200,5,7000,false);
@@ -1558,7 +1556,7 @@ class MainScene extends Phaser.Scene {
 
     setWeaponUp(){      
         //var rndX = Phaser.Math.Between(100,266);      
-        var rndXChoices = Phaser.Math.Between(0,1);      
+        var rndXChoices = (this.armEvoCount < 3)? 1 : Math.floor(Math.random() * 2); // 0 | 1 
         var rndyvel = Phaser.Math.Between(10,50);         
         var rndxvel = Phaser.Math.Between(-130,130);
               console.log(rndXChoices);
@@ -1678,7 +1676,7 @@ class MainScene extends Phaser.Scene {
         bulet.body.setSize(6, 6);
         bulet.setScale(2);
         setTimeout(()=>{bulet.destroy();},7000);
-        this.physics.moveToObject(bulet, this.player, 60);
+        this.physics.moveToObject(bulet, this.player, 160);
     }
 
     ShootEnemyTwo(enmy : any){
@@ -1709,11 +1707,11 @@ class MainScene extends Phaser.Scene {
             buletOne.setScale(2);
             buletTwo.setScale(2);
             buletThree.setScale(2);
-            buletOne.body.velocity.y = 50;
-            buletTwo.body.velocity.y = 50;
-            buletTwo.body.velocity.x = -10;
-            buletThree.body.velocity.y = 50;
-            buletThree.body.velocity.x = 10;
+            buletOne.body.velocity.y = 100;
+            buletTwo.body.velocity.y = 100;
+            buletTwo.body.velocity.x = -30;
+            buletThree.body.velocity.y = 100;
+            buletThree.body.velocity.x = 30;
             if(enmy.data == undefined){this.destroyEnmyBullet(buletOne,buletTwo,buletThree,fire),clearInterval(fire)};
             setTimeout(()=>{
                 this.destroyEnmyBullet(buletOne,buletTwo,buletThree, fire);
